@@ -8,5 +8,9 @@ weatherApp.config(function ($routeProvider) {
     .when('/account', {
         templateUrl: 'pages/createtimedepositaccount.htm',
         controller: 'CreateAccountNumberController'
-    })    
+    })
+    .when('/tdaccounts', {
+        templateUrl: 'pages/tdaccounts.htm',
+        controller: 'CreateAccountNumberController'
+    })   
 });
