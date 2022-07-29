@@ -23,6 +23,6 @@ public class ViewAccountDomain {
     private int id;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "timde_deposit_id")
+    @JoinColumn(name = "time_deposit_id")
     private TimeDepositAccountDomain timeDepositAccountDomain;
 }

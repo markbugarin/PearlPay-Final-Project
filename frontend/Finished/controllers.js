@@ -35,7 +35,7 @@ weatherApp.controller('forecastController', ['$scope', '$resource', '$routeParam
     
 }]);
 
-weatherApp.controller('hotdogController', ['$scope', '$location', '$routeParams', 'cityService', function($scope, $location, $routeParams, cityService) {
+weatherApp.controller('HomeController', ['$scope', '$location', '$routeParams', 'cityService', function($scope, $location, $routeParams, cityService) {
 
     $scope.client = {
         firstName: '',
@@ -55,7 +55,7 @@ weatherApp.controller('hotdogController', ['$scope', '$location', '$routeParams'
     }
 }]);
     
-weatherApp.controller('CreateAccountNumberController', ['$scope', '$location', '$routeParams', 'cityService', function($scope, $location, $routeParams, cityService) {
+weatherApp.controller('TransferController', ['$scope', '$location', '$routeParams', 'cityService', function($scope, $location, $routeParams, cityService) {
   
     $scope.accountNumber = '';
     $scope.id = id;
@@ -73,7 +73,7 @@ weatherApp.controller('CreateAccountNumberController', ['$scope', '$location', '
     }
 }]);
 
-weatherApp.controller('tdAccountsController', ['$scope', '$resource', '$routeParams', 'cityService', async function($scope, $resource, $routeParams, cityService) {
+weatherApp.controller('CheckController', ['$scope', '$resource', '$routeParams', 'cityService', async function($scope, $resource, $routeParams, cityService) {
  
     $scope.array = ['wew'];
 

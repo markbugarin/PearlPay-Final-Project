@@ -13,8 +13,13 @@ weatherApp.config(function ($routeProvider) {
         templateUrl: 'pages/tdaccounts.htm',
         controller: 'tdAccountsController'
     }
-    ).when('/transfer', {
+    )
+    .when('/transfer', {
         templateUrl: 'pages/transfer.htm',
         controller: 'tdAccountsController'
+    })   
+    .when('/check', {
+        templateUrl: 'pages/allaccounts.htm',
+        controller: 'CheckController'
     })   
 });
