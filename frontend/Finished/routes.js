@@ -3,7 +3,7 @@ weatherApp.config(function ($routeProvider) {
 
     $routeProvider.when('/', {
         templateUrl: 'pages/home.htm',
-        controller: 'hotdogController'
+        controller: 'HomeController'
     })
     .when('/account', {
         templateUrl: 'pages/createtimedepositaccount.htm',
