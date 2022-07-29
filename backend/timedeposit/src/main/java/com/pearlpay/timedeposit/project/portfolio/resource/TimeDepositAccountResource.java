@@ -5,6 +5,7 @@ import com.pearlpay.timedeposit.project.portfolio.domain.ClientDomain;
 import com.pearlpay.timedeposit.project.portfolio.domain.TimeDepositAccountDomain;
 import com.pearlpay.timedeposit.project.portfolio.implementation.ClientServiceImpl;
 import com.pearlpay.timedeposit.project.portfolio.implementation.TimeDepositAccountImpl;
+import com.pearlpay.timedeposit.project.portfolio.output.TimeDeposit;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,19 +24,20 @@ public class TimeDepositAccountResource {
 
 
     @PostMapping("/save")
-    public ResponseEntity<Response> saveAccount(@RequestParam("accountNumber") String accountNumber, @RequestParam("clientId") int clientId){
+    public ResponseEntity<Response> saveAccount(@RequestParam("accountNumber") String accountNumber, @RequestParam("clientId") int clientId,@RequestParam("balance") int balance){
 
         ClientDomain clientDomain = clientService.getClient(clientId);
         TimeDepositAccountDomain timeDepositAccount = TimeDepositAccountDomain.builder()
                 .accountNumber(accountNumber)
                 .clientDomain(clientDomain)
+                .balance(balance)
                 .accountStatus(true)
                 .build();
         timeDepositAccountImpl.createAccount(timeDepositAccount);
         return ResponseEntity.ok(
                 Response.builder()
                         .timeStamp(now())
-                        .data(of("accounts",timeDepositAccount))
+                        .data(of("accounts",new TimeDeposit(clientDomain.getFirstName(),clientDomain.getLastName(),balance)))
                         .message("Account Created")
                         .status(CREATED)
                         .statusCode(CREATED.value())

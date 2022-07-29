@@ -59,12 +59,13 @@ weatherApp.controller('CreateAccountNumberController', ['$scope', '$location', '
   
     $scope.accountNumber = '';
     $scope.id = id;
+    $scope.balance = 0;
   
     $scope.submit = ($event) => {
         const params = new URLSearchParams();
         params.append('accountNumber', $scope.accountNumber)
         params.append('clientId', id )
-    
+        params.append('balance',  $scope.balance )
     
         axios.post("http://localhost:8080/time-deposit-account/save", params).then((response) => {
             location.assign('/index.htm#/tdaccounts'); 
