@@ -12,5 +12,9 @@ weatherApp.config(function ($routeProvider) {
     .when('/tdaccounts', {
         templateUrl: 'pages/tdaccounts.htm',
         controller: 'tdAccountsController'
+    }
+    ).when('/transfer', {
+        templateUrl: 'pages/transfer.htm',
+        controller: 'tdAccountsController'
     })   
 });
