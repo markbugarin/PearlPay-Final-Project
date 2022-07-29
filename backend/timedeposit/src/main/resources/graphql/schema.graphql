@@ -1,0 +1,13 @@
+type timeDeposit {
+    id: ID!
+    accountNumber:string
+}
+type ViewAccount {
+    id: ID!
+    timeDeposit: [timeDeposit]
+}
+
+
+type Query {
+    viewAccounts(): [ViewAccount]
+}

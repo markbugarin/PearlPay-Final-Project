@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -26,7 +25,7 @@ public class ClientDomain {
     private int id;
 
     @OneToMany(mappedBy = "clientDomain",fetch = LAZY)
-    private List<TimeDepositAccount> timeDepositAccounts;
+    private List<TimeDepositAccountDomain> timeDepositAccounts;
 
     @Column(name = "first_name", length = 30)
     private String firstName;

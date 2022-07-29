@@ -1,6 +1,6 @@
 package com.pearlpay.timedeposit.project.portfolio.implementation;
 
-import com.pearlpay.timedeposit.project.portfolio.domain.TimeDepositAccount;
+import com.pearlpay.timedeposit.project.portfolio.domain.TimeDepositAccountDomain;
 import com.pearlpay.timedeposit.project.portfolio.repository.TimeDepositAccountRepo;
 import com.pearlpay.timedeposit.project.portfolio.service.TimeDepositAccountService;
 import lombok.extern.slf4j.Slf4j;
@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -22,7 +23,12 @@ public class TimeDepositAccountImpl implements TimeDepositAccountService {
     }
 
     @Override
-    public TimeDepositAccount createAccount(TimeDepositAccount timeDepositAccount) {
+    public TimeDepositAccountDomain createAccount(TimeDepositAccountDomain timeDepositAccount) {
         return timeDepositAccountRepo.save(timeDepositAccount);
+    }
+
+    @Override
+    public List<TimeDepositAccountDomain> findAllViewAccount() {
+        return timeDepositAccountRepo.findAll();
     }
 }

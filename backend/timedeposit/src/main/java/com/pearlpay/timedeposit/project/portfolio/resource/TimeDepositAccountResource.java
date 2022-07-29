@@ -2,10 +2,9 @@ package com.pearlpay.timedeposit.project.portfolio.resource;
 
 import com.pearlpay.timedeposit.project.portfolio.Response;
 import com.pearlpay.timedeposit.project.portfolio.domain.ClientDomain;
-import com.pearlpay.timedeposit.project.portfolio.domain.TimeDepositAccount;
+import com.pearlpay.timedeposit.project.portfolio.domain.TimeDepositAccountDomain;
 import com.pearlpay.timedeposit.project.portfolio.implementation.ClientServiceImpl;
 import com.pearlpay.timedeposit.project.portfolio.implementation.TimeDepositAccountImpl;
-import com.pearlpay.timedeposit.project.portfolio.service.TimeDepositAccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +26,7 @@ public class TimeDepositAccountResource {
     public ResponseEntity<Response> saveAccount(@RequestParam("accountNumber") String accountNumber, @RequestParam("clientId") int clientId){
 
         ClientDomain clientDomain = clientService.getClient(clientId);
-        TimeDepositAccount timeDepositAccount = TimeDepositAccount.builder()
+        TimeDepositAccountDomain timeDepositAccount = TimeDepositAccountDomain.builder()
                 .accountNumber(accountNumber)
                 .clientDomain(clientDomain)
                 .accountStatus(true)

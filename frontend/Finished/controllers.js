@@ -54,20 +54,34 @@ weatherApp.controller('hotdogController', ['$scope', '$location', '$routeParams'
         })  
     }
 }]);
-
+    
 weatherApp.controller('CreateAccountNumberController', ['$scope', '$location', '$routeParams', 'cityService', function($scope, $location, $routeParams, cityService) {
   
     $scope.accountNumber = '';
-
+    $scope.id = id;
   
     $scope.submit = ($event) => {
         const params = new URLSearchParams();
         params.append('accountNumber', $scope.accountNumber)
-        params.append('clientId', id)
+        params.append('clientId', id )
     
     
         axios.post("http://localhost:8080/time-deposit-account/save", params).then((response) => {
-
+            location.assign('/index.htm#/tdaccounts'); 
         })  
     }
+}]);
+
+weatherApp.controller('tdAccountsController', ['$scope', '$resource', '$routeParams', 'cityService', async function($scope, $resource, $routeParams, cityService) {
+ 
+    $scope.array = ['wew'];
+
+    await axios.get("http://localhost:8080/accounts/retrieve").then((response) => {
+        response.data.data.clients.forEach(element => {
+           $scope.array.push(element);
+        });
+    });
+    
+    console.log($scope.array);
+    
 }]);

@@ -11,6 +11,6 @@ weatherApp.config(function ($routeProvider) {
     })
     .when('/tdaccounts', {
         templateUrl: 'pages/tdaccounts.htm',
-        controller: 'CreateAccountNumberController'
+        controller: 'tdAccountsController'
     })   
 });
