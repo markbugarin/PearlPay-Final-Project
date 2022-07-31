@@ -1,3 +1,5 @@
+let id = 0;
+
 // CONTROLLERS
 timeDepositApp.controller('homeController', ['$scope', 'cityService', function($scope, cityService) {
     
@@ -63,7 +65,7 @@ timeDepositApp.controller('CreateAccountController', ['$scope', '$location', '$r
     // }
 }]);
 
-weatherApp.controller('CheckController', ['$scope', '$resource', '$routeParams', 'cityService', async function($scope, $resource, $routeParams, cityService) {
+timeDepositApp.controller('CheckController', ['$scope', '$resource', '$routeParams', 'cityService', async function($scope, $resource, $routeParams, cityService) {
  
     $scope.array = ['wew'];
 
