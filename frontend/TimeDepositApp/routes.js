@@ -20,7 +20,7 @@ timeDepositApp.config(function ($routeProvider) {
     })   
     .when('/check', {
         templateUrl: 'pages/checkallbalance.htm',
-        controller: 'CheckAllBalance'
+        controller: 'CheckController'
     })
     .when('/dashboard', {
         templateUrl: 'pages/dashboard.htm',
