@@ -1,11 +1,12 @@
 <form class="form-inline">
-  <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" disabled ng-model="selected.id" ng-show="true">
+  <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" disabled ng-model="selectedClient" ng-show="true">
 
   <!-- <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Client:</label> -->
-  <select ng-model="selected" ng-options="client.firstName for client in clients">
+  <select name="repeatSelect" id="repeatSelect" ng-model="selectedClient">
+    <option ng-repeat="client in clients" value="{{client.id}}">{{client.firstName}} {{client.lastName}}</option>
   </select>
   <br>
-  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Fullname: {{selected.firstName}} {{selected.lastName}}</label>
+  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Fullname: {{selectedClient}} {{selected.lastName}}</label>
     <!-- <span>User Name: {{selected.firstName}} {{selected.lastName}} , UserId: {{selected.id}}</span>
      -->
   <input type="number" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Amount" ng-model="account.amount">

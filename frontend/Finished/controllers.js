@@ -30,63 +30,43 @@ timeDepositApp.controller('HomeController', ['$scope', '$location', '$routeParam
 }]);
     
 timeDepositApp.controller('CreateAccountController', ['$scope', '$location', '$routeParams', 'cityService','$q', function($scope, $location, $routeParams, cityService, $q) {
-  
-    $scope.clients = [];
     $scope.account = {
         amount: '',
         interest: '',
         date: '',
     }
-    console.log();
-    $q.when( axios.get("http://localhost:8080/api/v1/client/all", $scope.clients).then((response) => {
-      
+    $q.when(axios.get("http://localhost:8080/api/v1/client/all", $scope.clients).then((response) => {
+        $scope.clients = [];
         response.data.data.clients.forEach(element => {
                 $scope.clients.push(element);
-                $scope.userselected = $scope.clients[0];
-             });
+             });        
              console.log($scope.clients);
-             console.log($scope.userselected);
         }) 
     ) 
         
         $scope.submit = ($event) => {
             $scope.timeDepositAccount = {
-                clientId: $scope.selected.id,
+                 clientId: parseInt($scope.selectedClient),
                  amount: $scope.account.amount,
                  interest: $scope.account.interest,
                  maturity: $scope.account.maturity
              }
              console.log($scope.timeDepositAccount);
             axios.post("http://localhost:8080/api/v1/primary-account/save", $scope.timeDepositAccount).then((response) => {
-              location.assign('Finished/index.htm#/account'); 
+              location.assign('index.htm#/dashboard'); 
             })  
         }
-    // $scope.accountNumber = '';
-    // $scope.id = id;
-    // $scope.balance = 0;
-  
-    // $scope.submit = ($event) => {
-    //     const params = new URLSearchParams();
-    //     params.append('accountNumber', $scope.accountNumber)
-    //     params.append('clientId', id )
-    //     params.append('balance',  $scope.balance )
-    
-    //     axios.post("http://localhost:8080/time-deposit-account/save", params).then((response) => {
-    //         location.assign('/index.htm#/tdaccounts'); 
-    //     })  
-    // }
 }]);
 
-timeDepositApp.controller('CheckController', ['$scope', '$resource', '$routeParams', 'cityService', async function($scope, $resource, $routeParams, cityService) {
- 
-    $scope.array = ['wew'];
+timeDepositApp.controller('DashboardController', ['$scope', '$location', '$routeParams', 'cityService','$q', function($scope, $location, $routeParams, cityService, $q) {
 
-    await axios.get("http://localhost:8080/accounts/retrieve").then((response) => {
-        response.data.data.clients.forEach(element => {
-           $scope.array.push(element);
-        });
-    });
-    
-    console.log($scope.array);
-    
+    $scope.accounts = []; 
+   $q.when(axios.get("http://localhost:8080/api/v1/primary-account/all", $scope.accounts).then((response) => {
+        response.data.data.accounts.forEach(element => {
+                $scope.accounts.push(element);
+             });
+            var totalIncome = Math.round(($scope.account.balance/$scope.account.interest)*100);
+             console.log(totalIncome);
+        }) 
+   )
 }]);
