@@ -29,23 +29,35 @@ timeDepositApp.controller('HomeController', ['$scope', '$location', '$routeParam
     }
 }]);
     
-timeDepositApp.controller('CreateAccountController', ['$scope', '$location', '$routeParams', 'cityService',  function($scope, $location, $routeParams, cityService) {
+timeDepositApp.controller('CreateAccountController', ['$scope', '$location', '$routeParams', 'cityService','$q', function($scope, $location, $routeParams, cityService, $q) {
   
     $scope.clients = [];
-    
-     axios.get("http://localhost:8080/api/v1/client/all", $scope.clients).then((response) => {
+    $scope.account = {
+        amount: '',
+        interest: '',
+        date: '',
+    }
+    console.log();
+    $q.when( axios.get("http://localhost:8080/api/v1/client/all", $scope.clients).then((response) => {
+      
         response.data.data.clients.forEach(element => {
-            $scope.clients.push(element);
-            $scope.userselected = $scope.clients[0];
-         });
-         console.log($scope.clients);
-         console.log($scope.userselected);
-        });  
-
+                $scope.clients.push(element);
+                $scope.userselected = $scope.clients[0];
+             });
+             console.log($scope.clients);
+             console.log($scope.userselected);
+        }) 
+    ) 
+        
         $scope.submit = ($event) => {
-            console.log($event);
-            axios.post("http://localhost:8080/api/v1/client/save", $scope.client).then((response) => {
-              id = response.data.data.clients.id
+            $scope.timeDepositAccount = {
+                clientId: $scope.selected.id,
+                 amount: $scope.account.amount,
+                 interest: $scope.account.interest,
+                 maturity: $scope.account.maturity
+             }
+             console.log($scope.timeDepositAccount);
+            axios.post("http://localhost:8080/api/v1/primary-account/save", $scope.timeDepositAccount).then((response) => {
               location.assign('Finished/index.htm#/account'); 
             })  
         }

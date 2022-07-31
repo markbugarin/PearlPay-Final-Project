@@ -1,5 +1,5 @@
 <form class="form-inline">
-  <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" disabled ng-model="selected.id" ng-show="false">
+  <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" disabled ng-model="selected.id" ng-show="true">
 
   <!-- <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Client:</label> -->
   <select ng-model="selected" ng-options="client.firstName for client in clients">
@@ -8,9 +8,9 @@
   <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Fullname: {{selected.firstName}} {{selected.lastName}}</label>
     <!-- <span>User Name: {{selected.firstName}} {{selected.lastName}} , UserId: {{selected.id}}</span>
      -->
-  <input type="number" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Amount">
-  <input type="number" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Interest">
-  <input type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2">
+  <input type="number" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Amount" ng-model="account.amount">
+  <input type="number" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Interest" ng-model="account.interest">
+  <input type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" ng-model="account.maturity">
 
   <button ng-click="submit()" class="btn btn-primary">Submit</button>
 </form>
