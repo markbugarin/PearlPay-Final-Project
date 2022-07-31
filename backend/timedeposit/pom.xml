@@ -11,8 +11,8 @@
 	<groupId>com.pearlpay</groupId>
 	<artifactId>timedeposit</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>time deposit</name>
-	<description>Time Deposit App</description>
+	<name>Time Deposit App</name>
+	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -50,10 +50,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-graphql</artifactId>
 		</dependency>
 	</dependencies>
 

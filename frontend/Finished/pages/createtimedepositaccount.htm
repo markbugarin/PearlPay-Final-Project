@@ -1,21 +1,16 @@
-<div class="row">
-  <form>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Client ID</label>
-      <input ng-model="id" type="text" class="form-control" disabled>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Account Number</label>
-      <input ng-model="accountNumber" type="number" class="form-control" id="exampleInputEmail1">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Deposit Balance</label>
-      <input ng-model="balance" type="number" class="form-control" id="exampleInputEmail1">
-    </div>
-    <p>{{balance}}</p>
-    <button ng-click="submit($event)" class="btn btn-primary">Submit</button>
-  </form>
- 
-</div>
+<form class="form-inline">
+  <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" disabled ng-model="selected.id" ng-show="false">
 
-  
+  <!-- <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Client:</label> -->
+  <select ng-model="selected" ng-options="client.firstName for client in clients">
+  </select>
+  <br>
+  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Fullname: {{selected.firstName}} {{selected.lastName}}</label>
+    <!-- <span>User Name: {{selected.firstName}} {{selected.lastName}} , UserId: {{selected.id}}</span>
+     -->
+  <input type="number" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Amount">
+  <input type="number" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Interest">
+  <input type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2">
+
+  <button ng-click="submit()" class="btn btn-primary">Submit</button>
+</form>
