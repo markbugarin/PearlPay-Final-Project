@@ -1,5 +1,5 @@
 // SERVICES
-weatherApp.service('cityService', function() {
+timeDepositApp.service('cityService', function() {
    
     this.city = "New York, NY";
     

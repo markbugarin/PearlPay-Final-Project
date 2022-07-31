@@ -1,3 +1,3 @@
 // MODULE
-var weatherApp = angular.module('weatherApp', ['ngRoute', 'ngResource']);
+var timeDepositApp = angular.module('timeDepositApp', ['ngRoute', 'ngResource']);
 

@@ -1,5 +1,5 @@
 // DIRECTIVES
-weatherApp.directive("weatherReport", function() {
+timeDepositApp.directive("weatherReport", function() {
    return {
        restrict: 'E',
        templateUrl: 'directives/weatherReport.html',

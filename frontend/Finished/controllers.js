@@ -1,7 +1,5 @@
-let id = 0;
-
 // CONTROLLERS
-weatherApp.controller('homeController', ['$scope', 'cityService', function($scope, cityService) {
+timeDepositApp.controller('homeController', ['$scope', 'cityService', function($scope, cityService) {
     
     $scope.city = cityService.city;
     
@@ -10,7 +8,7 @@ weatherApp.controller('homeController', ['$scope', 'cityService', function($scop
     });
     
 }]);
-weatherApp.controller('HomeController', ['$scope', '$location', '$routeParams', 'cityService', function($scope, $location, $routeParams, cityService) {
+timeDepositApp.controller('HomeController', ['$scope', '$location', '$routeParams', 'cityService', function($scope, $location, $routeParams, cityService) {
 
     $scope.client = {
         firstName: '',
@@ -24,12 +22,12 @@ weatherApp.controller('HomeController', ['$scope', '$location', '$routeParams', 
         console.log($event);
         axios.post("http://localhost:8080/api/v1/client/save", $scope.client).then((response) => {
           id = response.data.data.clients.id
-          location.assign('Finished/index.htm#/account'); 
+          location.assign('index.htm#/account'); 
         })  
     }
 }]);
     
-weatherApp.controller('CreateAccountController', ['$scope', '$location', '$routeParams', 'cityService',  function($scope, $location, $routeParams, cityService) {
+timeDepositApp.controller('CreateAccountController', ['$scope', '$location', '$routeParams', 'cityService',  function($scope, $location, $routeParams, cityService) {
   
     $scope.clients = [];
     

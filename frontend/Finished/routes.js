@@ -1,5 +1,5 @@
 // ROUTES
-weatherApp.config(function ($routeProvider) {
+timeDepositApp.config(function ($routeProvider) {
 
     $routeProvider.when('/', {
         templateUrl: 'pages/home.htm',
