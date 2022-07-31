@@ -66,7 +66,11 @@ timeDepositApp.controller('DashboardController', ['$scope', '$location', '$route
                 $scope.accounts.push(element);
              });
             var totalIncome = Math.round(($scope.account.balance/$scope.account.interest)*100);
-             console.log(totalIncome);
+
+            $scope.roundedPercentage = function(myValue, totalValue){
+                return Math.round(result, 2);
+             }
+             console.log($scope.accounts);
         }) 
    )
 }]);
