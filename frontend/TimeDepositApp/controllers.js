@@ -25,7 +25,6 @@ timeDepositApp.controller('CreateAccountController', ['$scope', '$location', '$r
         response.data.data.clients.forEach(element => {
                 $scope.clients.push(element);
              });        
-             console.log($scope.clients);
         }) 
     ) 
         
@@ -37,12 +36,24 @@ timeDepositApp.controller('CreateAccountController', ['$scope', '$location', '$r
                  maturity: $scope.account.maturity
              }
             axios.post("http://localhost:8080/api/v1/primary-account/save", $scope.timeDepositAccount).then((response) => {
-              location.assign('index.htm#/tdaccount'); 
+              location.assign('index.htm#/tdaccounts'); 
             })  
         }
 }]);
 
 timeDepositApp.controller('CheckController', ['$scope', '$location', '$routeParams', 'cityService','$q', function($scope, $location, $routeParams, cityService, $q) {
+
+    $scope.accounts = [];
+
+   $q.when(axios.get("http://localhost:8080/api/v1/primary-account/all", $scope.accounts).then((response) => {
+        response.data.data.accounts.forEach(element => {
+                $scope.accounts.push(element);
+             });
+        }) 
+   )
+}]);
+
+timeDepositApp.controller('tdAccountsController', ['$scope', '$location', '$routeParams', 'cityService','$q', function($scope, $location, $routeParams, cityService, $q) {
 
     $scope.accounts = [];
 
@@ -52,17 +63,17 @@ timeDepositApp.controller('CheckController', ['$scope', '$location', '$routePara
         response.data.data.accounts.forEach(element => {
                 $scope.accounts.push(element);
              });
-             function getMonthDifference(startDate, endDate) {
-                return (
-                  endDate.getMonth() -
-                  startDate.getMonth() +
-                  12 * (endDate.getFullYear() - startDate.getFullYear())
-                );
-              }
-             console.log(getMonthDifference(
-                new Date(response.data.data.accounts[2].createdAt), new Date(response.data.data.accounts[2].maturityDate))
-              );    
-              console.log($scope.accounts)
+            //  function getMonthDifference(startDate, endDate) {
+            //     return (
+            //       endDate.getMonth() -
+            //       startDate.getMonth() +
+            //       12 * (endDate.getFullYear() - startDate.getFullYear())
+            //     );
+            //   }
+            //  console.log(getMonthDifference(
+            //     new Date(response.data.data.accounts[2].createdAt), new Date(response.data.data.accounts[2].maturityDate))
+            //   );    
+            //   console.log($scope.accounts)
         }) 
    )
 }]);
